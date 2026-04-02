@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext"
 import { useNavigate } from "react-router"
 
 export default function Auth() {
-    const { signUp, user, logout, login } = useContext(AuthContext)
+    const { signUp, login } = useContext(AuthContext)
     const [mode, setMode] = useState("signup")
     const [error, setError] = useState(null)
     const { register, handleSubmit, formState: { errors } } = useForm()
@@ -30,7 +30,7 @@ export default function Auth() {
         <div className="page">
             <div className="container">
                 <div className="auth-container">
-                    {user && <button onClick={() => logout()}>logout</button>}
+
 
                     <h1 className="page-title">
                         {mode === "signup" ? "Sign Up" : "Login"}
@@ -67,8 +67,16 @@ export default function Auth() {
                     </form>
                     <div className="auth-switch">
                         {mode === "signup"
-                            ? (<p>Already have an account? <span className="auth-link" onClick={() => setMode("login")}>Login</span></p>)
-                            : (<p>Don't have an account? <span className="auth-link" onClick={() => setMode("signup")}>Sign Up</span></p>)}
+                            ? (<p>Already have an account?
+                                <span className="auth-link" onClick={() => setMode("login")}>
+                                    Login
+                                </span>
+                            </p>)
+                            : (<p>Don't have an account?
+                                <span className="auth-link" onClick={() => setMode("signup")}>
+                                    Sign Up
+                                </span>
+                            </p>)}
 
                     </div>
                 </div>
